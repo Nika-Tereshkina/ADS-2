@@ -24,8 +24,8 @@ double calcItem(double x, uint16_t n) {
 }
 
 double expn(double x, uint16_t count) {
-    double summa = 1.0;
-    for (uint16_t n = 1; n < count; n++) {
+    double summa = 0.0;
+    for (uint16_t n = 0; n < count; n++) {
         summa += calcItem(x, n);
     }
     return summa;
@@ -33,16 +33,16 @@ double expn(double x, uint16_t count) {
 
 double sinn(double x, uint16_t count) {
     double summa = x;
-    for (uint16_t n = 2; n < count; n += 2) {
-        summa += (n % 4 == 1 ? 1 : -1) * calcItem(x, n);
+    for (uint16_t n = 1; n <= count; n += 2) {
+        summa += ((n % 4) - 1) * -2 + 1 * calcItem(x, n);
     }
     return summa;
 }
 
 double cosn(double x, uint16_t count) {
     double summa = 1.0;
-    for (uint16_t n = 2; n < count; n += 2) {
-        summa += (n % 4 == 0 ? 1 : -1) * calcItem(x, n);
+    for (uint16_t n = 2; n <= count; n += 2) {
+        summa += ((n % 4) - 1) * -2 + 1 * calcItem(x, n);
     }
     return summa;
 }
