@@ -24,25 +24,25 @@ double calcItem(double x, uint16_t n) {
 }
 
 double expn(double x, uint16_t count) {
-    double summa = 0.0;
-    for (uint16_t n = 0; n < count; n++) {
-        summa += calcItem(x, n);
+    double summa = 1.0;
+    for (uint16_t n = 1; n <= count; n++) {
+        summa += pown(x, n) / fact(n);
     }
     return summa;
 }
 
 double sinn(double x, uint16_t count) {
-    double summa = x;
-    for (uint16_t n = 1; n <= count; n += 2) {
-        summa += ((n % 4) - 1) * -2 + 1 * calcItem(x, n);
+    double summa = 0.0;
+    for (uint16_t n = 0; n < count; n ++) {
+        summa += ((n % 2 == 0) ? 1 : -1) * pown(x, 2 * n + 1) / fact(2 * n + 1);
     }
     return summa;
 }
 
 double cosn(double x, uint16_t count) {
     double summa = 1.0;
-    for (uint16_t n = 2; n <= count; n += 2) {
-        summa += ((n % 4) - 1) * -2 + 1 * calcItem(x, n);
+    for (uint16_t n = 1; n <= count; n ++) {
+        summa += ((n % 2 == 0) ? 1 : -1) * pown(x, 2 * n) / fact(2 * n);
     }
     return summa;
 }
