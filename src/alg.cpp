@@ -40,12 +40,9 @@ double sinn(double x, uint16_t count) {
 }
 
 double cosn(double x, uint16_t count) {
-    double summa = 1.0;
-    double suw = -1.0;
-    for (uint16_t n = 1; n <= count; n++) {
-    double res = suw * pown(x, 2 * n) / fact(2 * n);
-    summa += res;
-    suw *= -1.0;
+    double summa = 0;
+    for (uint64_t i = 1; i <= count; i++) {
+    summa += calcItem(x, (2 * i) - 2) * pown(-1, i-1);
     }
     return summa;
 }
